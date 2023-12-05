@@ -1,32 +1,27 @@
-# Load the ggplot2 package which provides
-# the 'mpg' dataset.
-library(ggplot2)
-
 fluidPage(
-  titlePanel("Basic DataTable"),
+  titlePanel("Videoarchiv Psychische Störungen"),
 
   # Create a new Row in the UI for selectInputs
   fluidRow(
     column(4,
-        selectInput("man",
-                    "Manufacturer:",
+        selectInput("theme",
+                    "Störung:",
                     c("All",
-                      unique(as.character(mpg$manufacturer))))
+                      unique(as.character(adata$Hauptthema))))
     ),
     column(4,
-        selectInput("trans",
-                    "Transmission:",
+        selectInput("type",
+                    "Videotyp:",
                     c("All",
-                      unique(as.character(mpg$trans))))
+                      unique(as.character(adata$Art))))
     ),
     column(4,
-        selectInput("cyl",
-                    "Cylinders:",
+        selectInput("key",
+                    "Stichwort:",
                     c("All",
-                      unique(as.character(mpg$cyl))))
+                      unique(as.character(unlist(strsplit(adata$Stichwörter,","))))))
     )
   ),
   # Create a new row for the table.
   DT::dataTableOutput("table")
 )
-
