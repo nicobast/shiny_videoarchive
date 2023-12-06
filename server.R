@@ -1,10 +1,9 @@
-# Load the ggplot2 package which provides
-# the 'mpg' dataset.
-library(ggplot2)
-require(readxl)
+library(readxl)
 
 #READ DATA
 data_path<-paste0(getwd(),'/Uebersicht_ArchivPsychischeStoerung.xlsx')
+data_path
+
 adata <- read_xlsx(data_path,skip=6,
                    col_types = c('text','text','text','text','text','date','text','text'))
 
@@ -50,6 +49,6 @@ function(input, output) {
 
   options = list(
     pageLength = 20, autoWidth = TRUE,
-    columnDefs = list(list(targets = 4, width = '400px')),scrollX=T))) #set width of column 4
+    columnDefs = list(list(targets = 3, width = '300px')),scrollX=T))) #set width of column 3
 
 }
